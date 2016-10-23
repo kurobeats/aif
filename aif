@@ -96,7 +96,7 @@ FILE=""                     		# File(s) to be reviewed
 # Add locale on-the-fly and sets source translation file for installer
 select_language() {
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / språk / lingua / idioma / nyelv / língua" 0 0 9 \
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / språk / lingua / idioma / nyelv / língua" 0 0 10 \
  	"1" $"English            (en_**)" \
 	"2" $"Español            (es_ES)" \
 	"3" $"Português [Brasil] (pt_BR)" \
@@ -105,7 +105,8 @@ select_language() {
 	"6" $"Russkiy            (ru_RU)" \
 	"7" $"Italiano           (it_IT)" \
 	"8" $"Nederlands         (nl_NL)" \
-	"9" $"Magyar             (hu_HU)" 2>${ANSWER}
+	"9" $"Magyar             (hu_HU)" \
+	"10" $"Dansk              (da_DK)" >${ANSWER}
 
 	case $(cat ${ANSWER}) in
         "1") source /aif-master/english.trans
@@ -136,6 +137,9 @@ select_language() {
         "9") source /aif-master/hungarian.trans
              CURR_LOCALE="hu_HU.UTF-8"
              FONT="lat2-16.psfu"
+             ;;
+        "10") source /aif-master/danish.trans
+             CURR_LOCALE="da_DK.UTF-8"
              ;;
 #        "4") source /aif-dev-master/turkish.trans
 #             CURR_LOCALE="tr_TR.UTF-8"
